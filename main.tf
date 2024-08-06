@@ -30,6 +30,8 @@ resource "azurerm_linux_web_app" "TaskBoardWA" {
   location            = azurerm_service_plan.TaskBoardSP.location
   service_plan_id     = azurerm_service_plan.TaskBoardSP.id
 
+  depends_on = [azurerm_mssql_database.TaskBoardDB]
+
   site_config {
     application_stack {
       dotnet_version = "6.0"
